@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Indent Your JSON</title>
+    <link rel="stylesheet" href="/css.css"/>
+  </head>
+  <body>
+  <section id="container">
+    <h1>Indent Your JSON</h1>
+    <p class="left">Paste your JSON and indent it.</p>
+    <textarea id="input"></textarea>
+    <button type="submit" id="submit">Indent</button>
+    <section id="result" style="display: none">
+      <textarea id="output"></textarea>
+    </section>
+    <footer>by <a href="http://dab.io">dab.io</a></footer>
+  </section>
+  <script>
+    var $ = function (e) { return document.getElementById(e) }
+      , input = $("input")
+      , output = $("output")
+      , result = $("result")
+      , submit = $("submit");
+
+    input.focus();
+
+    submit.onclick = function() {
+      var jsonString = input.value;
+      output.value = JSON.stringify(JSON.parse(jsonString), null, 2);
+
+      result.style.display = "block";
+
+      output.focus();
+      output.select();
+    }
+    //if (output) {
+    //  output.focus();
+    //  output.select();
+    //} else {
+    //  input.focus();
+    //}
+  </script>
+</body>
+</html>
